@@ -1,0 +1,5 @@
+src/types/database.ts
+package-lock.json
+playwright-report/
+test-results/
+supabase/.temp/
