@@ -11,7 +11,7 @@
 
 ## 로컬 실행
 
-Node.js `22.22.2`, npm `11.12.0`, Docker가 필요합니다.
+Node.js `22.23.2`, npm `11.12.0`, Docker가 필요합니다.
 
 ```bash
 npm ci
