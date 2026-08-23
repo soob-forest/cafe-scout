@@ -29,7 +29,7 @@ describe("DeleteVisitButton", () => {
     await waitFor(() =>
       expect(screen.getByRole("alert")).toHaveTextContent("방문 기록을 삭제하지 못했습니다"),
     );
-    expect(screen.getByRole("button", { name: "기록 삭제" })).toBeEnabled();
+    await waitFor(() => expect(screen.getByRole("button", { name: "기록 삭제" })).toBeEnabled());
     expect(replace).not.toHaveBeenCalled();
   });
 });
