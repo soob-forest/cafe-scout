@@ -47,6 +47,10 @@ npm run test:e2e
 ## 문서
 
 - [제품/구현 명세](docs/SPEC.md)
+- [모바일·태블릿 반응형 웹 개선 계획](docs/RESPONSIVE_WEB_PLAN.md)
+- [모바일·태블릿 반응형 웹 구현 보고서](docs/RESPONSIVE_IMPLEMENTATION_REPORT.md)
+- [모바일·태블릿 반응형 시각 검토](docs/RESPONSIVE_VISUAL_REVIEW.md)
+- [카페 음료 1잔 수익성 조사](docs/research/2026-cafe-beverage-profit-margin-report.md)
 - [구현 체크리스트](docs/TODO.md)
 - [아키텍처 결정](docs/adr/0001-free-tier-web-architecture.md)
 - [P1 관찰 모델 결정](docs/adr/0002-p1-occupancy-observations.md)
