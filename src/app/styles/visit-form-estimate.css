@@ -1,0 +1,152 @@
+.estimate-sidebar {
+  position: sticky;
+  top: 96px;
+}
+.estimate-card {
+  padding: 25px;
+  color: white;
+  background: var(--forest);
+  border-radius: 24px;
+  box-shadow: 0 26px 60px rgba(24, 61, 44, 0.2);
+}
+.estimate-title {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+.estimate-title .eyebrow {
+  color: #a9c1b0;
+}
+.estimate-title h2 {
+  margin: 7px 0 0;
+  font:
+    750 27px/1 var(--font-display),
+    sans-serif;
+}
+.estimate-title .confidence-pill {
+  padding: 7px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+.estimate-missing {
+  padding: 28px 0 18px;
+}
+.estimate-missing strong {
+  font-size: 24px;
+}
+.estimate-missing p,
+.estimate-missing li {
+  color: #c1d1c6;
+  font-size: 12px;
+}
+.estimate-missing ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+}
+.estimate-missing li {
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+.metric-pair {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 21px 0;
+}
+.metric-pair > div {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.075);
+  border-radius: 11px;
+}
+.metric-pair span {
+  display: block;
+  margin-bottom: 7px;
+  color: #b9cabe;
+  font-size: 10px;
+}
+.metric-pair strong {
+  font-size: 17px;
+}
+.scenario-table {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 13px;
+}
+.scenario-table > div {
+  display: grid;
+  grid-template-columns: 1.05fr repeat(3, 1fr);
+  align-items: center;
+  min-height: 45px;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+.scenario-table > div:last-child {
+  border: 0;
+}
+.scenario-table span,
+.scenario-table b {
+  text-align: center;
+  font-size: 10px;
+}
+.scenario-table b {
+  color: #afc4b5;
+  text-align: left;
+}
+.scenario-table .featured {
+  color: #ffd2bd;
+  font-weight: 850;
+}
+.estimate-detail {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px;
+  padding: 18px 2px;
+  color: #b9cabe;
+  font-size: 11px;
+}
+.estimate-detail b {
+  color: white;
+}
+.confidence-explain {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 3px 0 14px;
+  color: #b9cabe;
+  font-size: 10px;
+}
+.save-message {
+  margin-bottom: 12px;
+  padding: 10px;
+  color: #ffd7cc;
+  background: rgba(164, 45, 29, 0.35);
+  border-radius: 9px;
+}
+.save-button {
+  width: 100%;
+  min-height: 50px;
+  color: var(--forest);
+  background: white;
+  border-radius: 13px;
+}
+.save-button:hover {
+  color: white;
+}
+.mobile-estimate-summary {
+  display: none;
+}
+.disclaimer {
+  margin: 12px 4px 0;
+  color: #9eb3a4;
+  font-size: 9px;
+  line-height: 1.5;
+  text-align: center;
+}

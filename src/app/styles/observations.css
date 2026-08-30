@@ -1,0 +1,69 @@
+/* Occupancy observations */
+.observation-form {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 0.8fr auto;
+  gap: 10px;
+  align-items: end;
+}
+.observation-form .field input {
+  min-height: 42px;
+}
+.observation-form .segmented {
+  margin-bottom: 0;
+}
+.occupancy-chart {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0;
+}
+.occupancy-chart > div {
+  display: grid;
+  grid-template-columns: 65px minmax(100px, 1fr) 90px;
+  gap: 11px;
+  align-items: center;
+}
+.occupancy-chart span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.occupancy-chart > div > div {
+  height: 9px;
+  overflow: hidden;
+  background: #e1ddd3;
+  border-radius: 999px;
+}
+.occupancy-chart i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #7fa48b, var(--orange));
+  border-radius: inherit;
+}
+.occupancy-chart strong {
+  font-size: 12px;
+}
+.occupancy-chart small {
+  color: var(--muted);
+  font-weight: 500;
+}
+.observation-list {
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.observation-list li {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 65px 90px 34px 34px;
+  gap: 8px;
+  align-items: center;
+  min-height: 52px;
+  border-bottom: 1px solid var(--line);
+}
+.observation-list span,
+.observation-list small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.observation-list strong {
+  font-size: 13px;
+}

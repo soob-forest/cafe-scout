@@ -4,6 +4,7 @@ import { z } from "zod";
 import { formatCompactKrw, formatKrw, formatSeoulDate } from "@/lib/format";
 import { requireUser } from "@/lib/auth";
 import { getCompareVisits, RepositoryError } from "@/features/visits/repository";
+import { CompareScroll } from "@/features/visits/compare-scroll";
 import type { VisitRecord } from "@/features/visits/types";
 
 export const dynamic = "force-dynamic";
@@ -104,6 +105,10 @@ export default async function ComparePage({
     );
   }
 
+  return <CompareView visits={visits} />;
+}
+
+function CompareView({ visits }: { visits: VisitRecord[] }) {
   return (
     <main className="page-shell compare-page">
       <Link className="back-link" href="/visits">
@@ -116,44 +121,55 @@ export default async function ComparePage({
           <p>같은 기준으로 관찰한 매장의 구조를 나란히 살펴보세요.</p>
         </div>
       </header>
-      <div
-        className="compare-scroll"
-        tabIndex={0}
-        aria-label="방문 기록 비교표. 모바일에서는 가로로 스크롤할 수 있습니다."
-      >
-        <table className="compare-table">
-          <thead>
-            <tr>
-              <th scope="col">비교 항목</th>
-              {visits.map((visit) => (
-                <th scope="col" key={visit.id}>
-                  <Link href={`/visits/${visit.id}`}>
-                    <strong>{visit.cafe.name}</strong>
-                    <span>{visit.cafe.region}</span>
-                    <small>{formatSeoulDate(visit.visited_at)}</small>
-                  </Link>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.label}>
-                <th scope="row">{row.label}</th>
-                {visits.map((visit) => {
-                  const value = row.cell(visit);
-                  return (
-                    <td key={visit.id}>
-                      <strong>{value.main}</strong>
-                      {value.secondary && <small>{value.secondary}</small>}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <p className="compare-scroll-hint" id="compare-scroll-help">
+        표를 좌우로 움직여 선택한 방문 기록을 비교하세요.
+      </p>
+      <CompareTable visits={visits} />
     </main>
+  );
+}
+
+function CompareTable({ visits }: { visits: VisitRecord[] }) {
+  return (
+    <CompareScroll>
+      <table className="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">비교 항목</th>
+            {visits.map((visit) => (
+              <th scope="col" key={visit.id}>
+                <Link href={`/visits/${visit.id}`}>
+                  <strong>{visit.cafe.name}</strong>
+                  <span>{visit.cafe.region}</span>
+                  <small>{formatSeoulDate(visit.visited_at)}</small>
+                </Link>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <CompareRow key={row.label} row={row} visits={visits} />
+          ))}
+        </tbody>
+      </table>
+    </CompareScroll>
+  );
+}
+
+function CompareRow({ row, visits }: { row: Row; visits: VisitRecord[] }) {
+  return (
+    <tr>
+      <th scope="row">{row.label}</th>
+      {visits.map((visit) => {
+        const value = row.cell(visit);
+        return (
+          <td key={visit.id}>
+            <strong>{value.main}</strong>
+            {value.secondary && <small>{value.secondary}</small>}
+          </td>
+        );
+      })}
+    </tr>
   );
 }

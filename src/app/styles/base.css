@@ -1,0 +1,99 @@
+:root {
+  --ink: #1f2a24;
+  --muted: #5b645e;
+  --paper: #f6f2e9;
+  --cream: #fffcf5;
+  --forest: #183d2c;
+  --mint: #d9e8dc;
+  --orange: #e36d3b;
+  --line: #d9d4c8;
+  --shadow: 0 26px 70px rgba(31, 42, 36, 0.14);
+  --mobile-edge: 14px;
+  --mobile-nav-height: 58px;
+  --mobile-nav-gap: 12px;
+  --mobile-fixed-bottom: calc(
+    var(--mobile-nav-height) + var(--mobile-nav-gap) * 2 + env(safe-area-inset-bottom)
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-body), system-ui, sans-serif;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(227, 109, 59, 0.12), transparent 28rem),
+    linear-gradient(135deg, #f8f5ed 0%, #f1ede3 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  color: inherit;
+}
+button:not(:disabled),
+select:not(:disabled),
+input[type="checkbox"] {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+img,
+svg {
+  max-width: 100%;
+}
+:focus-visible {
+  outline: 3px solid rgba(227, 109, 59, 0.46);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

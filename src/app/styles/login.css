@@ -1,0 +1,119 @@
+/* Login */
+.login-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  background: var(--cream);
+}
+.login-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(42px, 8vw, 120px);
+  color: white;
+  background: var(--forest);
+}
+.brand-light {
+  position: absolute;
+  top: 34px;
+  color: white;
+}
+.brand-mark-light {
+  color: var(--forest);
+  background: white;
+}
+.eyebrow.light {
+  color: #b9cdbf;
+}
+.login-copy h1 {
+  margin: 22px 0;
+  font:
+    800 clamp(48px, 6vw, 84px)/1.02 var(--font-display),
+    sans-serif;
+  letter-spacing: -0.06em;
+}
+.login-copy > p:last-child {
+  max-width: 420px;
+  color: #bdd0c3;
+  line-height: 1.7;
+}
+.login-card {
+  align-self: center;
+  width: min(440px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(30px, 5vw, 52px);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+}
+.login-card h2 {
+  margin: 10px 0;
+  font:
+    750 31px/1.2 var(--font-display),
+    sans-serif;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+.login-description {
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.login-form {
+  display: grid;
+  gap: 18px;
+}
+.login-form label,
+.field {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+.login-form input,
+.field input,
+.field textarea,
+.field select,
+.menu-row input,
+.menu-row select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 13px;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+.field textarea {
+  min-height: 110px;
+  padding-block: 12px;
+  resize: vertical;
+  line-height: 1.6;
+}
+.login-form input:focus,
+.field input:focus,
+.field textarea:focus,
+.field select:focus,
+.menu-row input:focus,
+.menu-row select:focus {
+  border-color: var(--orange);
+  outline: 3px solid rgba(227, 109, 59, 0.13);
+}
+.login-form .primary-button {
+  width: 100%;
+  margin-top: 6px;
+}
+.form-error {
+  margin: 0;
+  color: #a13d28;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.setup-note {
+  margin: 18px 0 0;
+  color: #8c641f;
+  font-size: 12px;
+}

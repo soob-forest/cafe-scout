@@ -1,20 +1,58 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Camera, X } from "lucide-react";
 import type { PhotoWithUrl } from "./types";
 
+function PhotoLightbox({
+  photo,
+  cafeName,
+  onClose,
+  returnFocus,
+}: {
+  photo: PhotoWithUrl;
+  cafeName: string;
+  onClose: () => void;
+  returnFocus: HTMLButtonElement | null;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKey);
+      returnFocus?.focus();
+    };
+  }, [onClose, returnFocus]);
+
+  return (
+    <div className="lightbox" role="dialog" aria-modal="true" aria-label="사진 확대 보기" onClick={onClose}>
+      <button ref={closeRef} type="button" aria-label="확대 보기 닫기" onClick={onClose}>
+        <X />
+      </button>
+      <img
+        src={photo.signedUrl ?? ""}
+        alt={`${cafeName} 확대 사진`}
+        onClick={(event) => event.stopPropagation()}
+      />
+    </div>
+  );
+}
+
 export function PhotoGallery({ photos, cafeName }: { photos: PhotoWithUrl[]; cafeName: string }) {
   const [active, setActive] = useState<PhotoWithUrl | null>(null);
-  useEffect(() => {
-    if (!active) return;
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActive(null);
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, [active]);
+  const [returnFocus, setReturnFocus] = useState<HTMLButtonElement | null>(null);
 
   if (!photos.length)
     return (
@@ -33,7 +71,10 @@ export function PhotoGallery({ photos, cafeName }: { photos: PhotoWithUrl[]; caf
             className="gallery-item"
             key={photo.id}
             disabled={!photo.signedUrl}
-            onClick={() => setActive(photo)}
+            onClick={(event) => {
+              setReturnFocus(event.currentTarget);
+              setActive(photo);
+            }}
           >
             {photo.signedUrl ? (
               <img
@@ -48,22 +89,12 @@ export function PhotoGallery({ photos, cafeName }: { photos: PhotoWithUrl[]; caf
         ))}
       </div>
       {active?.signedUrl && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="사진 확대 보기"
-          onClick={() => setActive(null)}
-        >
-          <button type="button" aria-label="확대 보기 닫기" onClick={() => setActive(null)}>
-            <X />
-          </button>
-          <img
-            src={active.signedUrl}
-            alt={`${cafeName} 확대 사진`}
-            onClick={(event) => event.stopPropagation()}
-          />
-        </div>
+        <PhotoLightbox
+          photo={active}
+          cafeName={cafeName}
+          onClose={() => setActive(null)}
+          returnFocus={returnFocus}
+        />
       )}
     </>
   );
