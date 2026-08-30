@@ -4,6 +4,7 @@ out/
 coverage/
 playwright-report/
 test-results/
+artifacts/
 backups/
 .vercel/
 .DS_Store
