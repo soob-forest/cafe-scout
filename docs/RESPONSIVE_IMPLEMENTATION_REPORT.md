@@ -112,10 +112,12 @@ npm run test:e2e
 - Chromium Playwright: 32개 통과, 중복 viewport 실행을 막기 위한 28개 건너뜀
 - WebKit iPhone 13 에뮬레이션: 반응형·상태 14개 통과
 - 데스크톱 visual baseline: 5개 통과, before/after viewport 증적 36쌍 생성
+- [GitHub Actions CI 33305830516](https://github.com/soob-forest/cafe-scout/actions/runs/33305830516):
+  커밋 `b50bc5d6cb3c3a66467a805fac231f8b2e828e62`에서 성공
 
 ## 외부 확인이 필요한 항목
 
-- GitHub CLI가 로그인되지 않아 Issue/PR 생성과 원격 CI 확인은 수행할 수 없다.
+- GitHub CLI가 로그인되지 않아 Issue/PR 생성과 캡처 첨부는 수행할 수 없다.
 - 연결 가능한 실제 iPhone/iPad/Android가 없어 Safari/Chrome의 실제 safe area, 가상 키보드,
   사진 선택기는 실기기 확인이 필요하다.
 - WebKit iPhone 13 에뮬레이션은 엔진·viewport 호환성 근거이며 실제 iOS 기기의 safe area, 소프트웨어
@@ -123,8 +125,8 @@ npm run test:e2e
 - 변경 전/후 캡처는 로컬에 생성했지만 GitHub Issue/PR 첨부는 인증 후 수행해야 한다. 200% 확대는
   동등 CSS viewport로 자동 검사했으며 모바일 브라우저의 실제 pinch/가상 키보드 조합은 실기기
   항목에 포함한다.
-- 현재 로컬 Node.js는 `v23.11.0`으로 프로젝트 권장 22/24와 다르다. 자동 검증은 통과했지만 원격
-  CI에서는 지원 버전으로 재확인해야 한다.
+- 현재 로컬 Node.js는 `v23.11.0`으로 프로젝트 권장 22/24와 다르지만, 원격 CI가 `.nvmrc`의 지원
+  버전에서 전체 검증을 통과했다.
 
 외부 확인 결과는 이 문서의 기준과 명령을 그대로 Issue/PR에 옮겨 기록한다. 비밀값이나 로컬 인증
 정보는 문서·로그·첨부물에 포함하지 않는다.

@@ -93,15 +93,17 @@ iPhone 13 WebKit 에뮬레이션의 반응형·상태 검사 14개가 통과했�
 
 ## 계획된 PR별 증적과 남은 위험
 
-| 묶음               | before/after 증적                      | 검토 결과                           | 남은 위험                  |
-| ------------------ | -------------------------------------- | ----------------------------------- | -------------------------- |
-| PR 1 기준선        | 36장 before + manifest                 | 기준 화면 재현 완료                 | GitHub Issue 첨부 대기     |
-| PR 2 CSS 분리      | 공개 화면 exact, 인증 화면 strict diff | cascade 누락 없음                   | 다른 OS의 폰트 raster 차이 |
-| PR 3 컴포넌트 분리 | 폼·상세 pixel diff + unit/E2E          | 공개 API·DOM 흐름 유지              | 실제 사진 선택기 차이      |
-| PR 4 공통 기반     | 모든 viewport shell 캡처               | safe area/token/44px 적용           | 실제 기기 safe area        |
-| PR 5 공개·목록     | 홈·로그인·목록 6폭 pair                | 1/2/3열과 비교 bar 정상             | iOS 글꼴 확대 설정         |
-| PR 6 폼            | 폼 6폭 pair                            | 저장 bar 적층·tablet 병렬 정상      | 실제 가상 키보드           |
-| PR 7 상세·비교     | 상세·비교 6폭 pair                     | Chromium/WebKit 키보드 scroll 정상  | 실기기 touch momentum      |
-| PR 8 회귀          | manifest + visual/E2E report           | Chromium 32·WebKit 14·visual 5 통과 | 원격 CI·실기기 3종         |
+| 묶음               | before/after 증적                      | 검토 결과                                   | 남은 위험                  |
+| ------------------ | -------------------------------------- | ------------------------------------------- | -------------------------- |
+| PR 1 기준선        | 36장 before + manifest                 | 기준 화면 재현 완료                         | GitHub Issue 첨부 대기     |
+| PR 2 CSS 분리      | 공개 화면 exact, 인증 화면 strict diff | cascade 누락 없음                           | 다른 OS의 폰트 raster 차이 |
+| PR 3 컴포넌트 분리 | 폼·상세 pixel diff + unit/E2E          | 공개 API·DOM 흐름 유지                      | 실제 사진 선택기 차이      |
+| PR 4 공통 기반     | 모든 viewport shell 캡처               | safe area/token/44px 적용                   | 실제 기기 safe area        |
+| PR 5 공개·목록     | 홈·로그인·목록 6폭 pair                | 1/2/3열과 비교 bar 정상                     | iOS 글꼴 확대 설정         |
+| PR 6 폼            | 폼 6폭 pair                            | 저장 bar 적층·tablet 병렬 정상              | 실제 가상 키보드           |
+| PR 7 상세·비교     | 상세·비교 6폭 pair                     | Chromium/WebKit 키보드 scroll 정상          | 실기기 touch momentum      |
+| PR 8 회귀          | manifest + visual/E2E report           | Chromium 32·WebKit 14·visual 5·원격 CI 통과 | 실기기 3종                 |
 
-실제 iPhone/iPad/Android 결과와 GitHub 링크는 외부 환경이 준비되면 이 표에 추가한다.
+[원격 CI 33305830516](https://github.com/soob-forest/cafe-scout/actions/runs/33305830516)은 커밋
+`b50bc5d6cb3c3a66467a805fac231f8b2e828e62`에서 성공했다. 실제 iPhone/iPad/Android 결과와
+GitHub Issue 링크는 외부 환경이 준비되면 이 표에 추가한다.
